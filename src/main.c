@@ -6,7 +6,7 @@
 /*   By: edestiny <edestiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 13:52:17 by edestiny          #+#    #+#             */
-/*   Updated: 2019/05/25 17:18:45 by mswarthy         ###   ########.fr       */
+/*   Updated: 2019/05/25 18:45:16 by mswarthy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		main(int argc, char **argv)
 	{
 		if (!(list = val_read(open(argv[1], O_RDONLY))))
 		{
-			ft_putstr("Error\n");
+			ft_putstr("error\n");
 			return (0);
 		}
 		map = solve(list);

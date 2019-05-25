@@ -6,7 +6,7 @@
 /*   By: edestiny <edestiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 15:19:04 by edestiny          #+#    #+#             */
-/*   Updated: 2019/05/25 17:30:00 by mswarthy         ###   ########.fr       */
+/*   Updated: 2019/05/25 18:31:17 by mswarthy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ t_etris		*list_tetrim(char *str, char value)
 	t_point	*min;
 	t_point	*max;
 
+	if (!valid_tetr(str))
+		return (NULL);
 	min = create_point(3, 3);
 	max = create_point(0, 0);
 	figue = ft_memalloc(sizeof(t_etris));
@@ -84,7 +86,7 @@ t_etris		*list_tetrim(char *str, char value)
 			max->x - min->x + 1);
 		i++;
 	}
-	figue->height = max->y - min->y + 1;
+    figue->height = max->y - min->y + 1;
 	figue->weight = max->x - min->x + 1;
 	figue->value = value;
 	figue->pos = arr;
