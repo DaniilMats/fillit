@@ -6,7 +6,7 @@
 /*   By: edestiny <edestiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 13:52:17 by edestiny          #+#    #+#             */
-/*   Updated: 2019/05/25 18:45:16 by mswarthy         ###   ########.fr       */
+/*   Updated: 2019/05/27 14:02:03 by mswarthy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,25 @@ int		main(int argc, char **argv)
 {
 	t_map	*map;
 	t_list	*list;
+	int		i;
 
 	if (argc == 2)
 	{
-		if (!(list = val_read(open(argv[1], O_RDONLY))))
+		i = 0;
+		if (!(list = val_read(open(argv[1], O_RDONLY), i)))
 		{
 			ft_putstr("error\n");
-			return (0);
+			return (1);
 		}
 		map = solve(list);
-		//ft_memdel((void**)&list);   list free
+		free_list(list);
 		print_map(map);
-		//free_karta(map);    map free
+		free_karta(map);
 	}
 	else
-		ft_putstr("Error\n");
+	{
+		ft_putstr("usage: fillit input_file\n");
+		return (1);
+	}
 	return (0);
 }

@@ -6,27 +6,48 @@
 /*   By: mswarthy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 18:56:34 by mswarthy          #+#    #+#             */
-/*   Updated: 2019/05/25 17:05:13 by mswarthy         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:58:25 by mswarthy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+void	free_list(t_list *list)
+{
+	t_list *buf;
+
+	while (list)
+	{
+		buf = list->next;
+		free_tetr((t_etris*)list->content);
+		ft_memdel((void**)&list);
+		list = buf;
+	}
+}
+
+void	free_tetr(t_etris *figue)
+{
+	int i;
+
+	i = 0;
+	while (i < figue->height)
+		ft_memdel((void**)(&(figue->pos[i++])));
+	ft_memdel((void**)(&(figue->pos)));
+	ft_memdel((void**)&figue);
+}
+
 void	free_karta(t_map *karta)
 {
 	int i;
 
-	i = karta->size - 1;
-	if (karta)
+	i = 0;
+	while (i < karta->size)
 	{
-		while (i >= 0)
-		{
-			free(&(karta->karta[i]));
-			i--;
-		}
-		free(&(karta->karta));
-		free(&karta);
+		ft_memdel((void**)(&(karta->karta[i])));
+		i++;
 	}
+	ft_memdel((void**)(&(karta->karta)));
+	ft_memdel((void**)&karta);
 }
 
 void	print_map(t_map *map)

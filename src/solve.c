@@ -6,7 +6,7 @@
 /*   By: mswarthy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 17:58:06 by mswarthy          #+#    #+#             */
-/*   Updated: 2019/05/25 17:36:27 by mswarthy         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:51:35 by mswarthy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_map		*solve(t_list *list)
 	while (!solved(map, list))
 	{
 		size++;
-		//free_karta(map);
+		free_karta(map);
 		map = new_map(size);
 	}
 	return (map);
