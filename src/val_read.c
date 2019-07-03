@@ -27,7 +27,7 @@ t_list		*val_read(int fd, int i)
 	ft_memset((void*)buf, '\0', 22);
 	while ((ret[i] = read(fd, buf, 21)) > 0)
 	{
-		if (!(figue = list_tetrim(buf, value++)) || ret[i] < 20)
+		if (!(figue = list_tetrim(buf, value++)) || ret[i] < 19)
 			return (NULL);
 		ft_lstadd(&list, ft_lstnew(figue, sizeof(t_etris)));
 		ft_memset((void*)buf, '\0', 20);
